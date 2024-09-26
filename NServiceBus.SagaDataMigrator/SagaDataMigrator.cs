@@ -12,18 +12,20 @@ public abstract class SagaDataMigrator<TSagaStarter, TSagaData> : IMigrateSagaDa
     where TSagaData : class, IContainSagaData, new()
 {
     private readonly IMessageSession _messageSession;
+    private readonly IPersistSagaData _sourcePersistence;
     private readonly ILogger<SagaDataMigrator<TSagaStarter, TSagaData>> _logger;
-    protected SagaDataMigrator(IMessageSession messageSession, ILoggerFactory loggerFactory)
+    protected SagaDataMigrator(IMessageSession messageSession, 
+        IPersistSagaData sourcePersistence,
+        ILoggerFactory loggerFactory)
     {
         _messageSession = messageSession;
+        _sourcePersistence = sourcePersistence;
         _logger = loggerFactory.CreateLogger<SagaDataMigrator<TSagaStarter,TSagaData>>();
     }
-
-    protected abstract Task<List<TSagaData>> GetSagaDataFromSourcePersistence();
     
     public async Task Migrate()
     {
-        var sagaDatas = await GetSagaDataFromSourcePersistence();
+        var sagaDatas = await _sourcePersistence.GetSagaDataFromSourcePersistence<TSagaData>();
         var counter = 0;
         foreach (var data in sagaDatas)
         {
