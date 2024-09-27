@@ -1,8 +1,8 @@
-using NServiceBus.EndpointMigrationExample.DataMigration;
-using NServiceBus.EndpointMigrationExample.Messages;
-using NServiceBus.SagaDataMigrator;
+using NServiceBus;
+using SagaDataMigrator.EndpointMigrationExample.DataMigration;
+using SagaDataMigrator.EndpointMigrationExample.Messages;
 
-namespace NServiceBus.EndpointMigrationExample;
+namespace SagaDataMigrator.EndpointMigrationExample;
 
 public class ExampleSaga : Saga<ExampleSagaData>,
     IAmStartedByMessages<StartExampleSaga>,

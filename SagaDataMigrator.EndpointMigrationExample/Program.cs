@@ -1,6 +1,6 @@
-using System.Diagnostics;
-using NServiceBus.EndpointMigrationExample;
-using NServiceBus.SagaDataMigrator;
+using NServiceBus;
+using SagaDataMigrator.EndpointMigrationExample;
+using SagaDataMigrator;
 
 var builder = Host.CreateApplicationBuilder(args);
 

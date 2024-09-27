@@ -1,4 +1,6 @@
-namespace NServiceBus.SagaDataMigrator;
+using NServiceBus;
+
+namespace SagaDataMigrator;
 
 public abstract class MigrateSagaDataMessage<TSagaData> : IMessage where TSagaData : IContainSagaData
 {

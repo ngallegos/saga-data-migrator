@@ -1,6 +1,7 @@
 using System.Reflection;
+using NServiceBus;
 
-namespace NServiceBus.SagaDataMigrator;
+namespace SagaDataMigrator;
 
 public static class Extensions
 {

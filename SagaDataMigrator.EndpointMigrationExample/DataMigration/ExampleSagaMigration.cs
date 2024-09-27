@@ -1,6 +1,6 @@
-using NServiceBus.SagaDataMigrator;
+using NServiceBus;
 
-namespace NServiceBus.EndpointMigrationExample.DataMigration;
+namespace SagaDataMigrator.EndpointMigrationExample.DataMigration;
 
 public class ExampleSagaMigrator : SagaDataMigrator<MigrateExampleSagaData, ExampleSagaData>
 {

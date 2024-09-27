@@ -1,7 +1,7 @@
 using System.Text.Json;
-using NServiceBus.SagaDataMigrator;
+using NServiceBus;
 
-namespace NServiceBus.EndpointMigrationExample;
+namespace SagaDataMigrator.EndpointMigrationExample;
 
 public class LegacySagaDataProvider : IProvideLegacySagaData
 {

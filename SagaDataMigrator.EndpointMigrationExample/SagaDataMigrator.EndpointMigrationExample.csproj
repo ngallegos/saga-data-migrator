@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\NServiceBus.SagaDataMigrator\NServiceBus.SagaDataMigrator.csproj" />
+      <ProjectReference Include="..\SagaDataMigrator\SagaDataMigrator.csproj" />
     </ItemGroup>
 
     <ItemGroup>

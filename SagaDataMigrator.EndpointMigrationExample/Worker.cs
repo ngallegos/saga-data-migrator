@@ -1,6 +1,7 @@
-using NServiceBus.EndpointMigrationExample.Messages;
+using NServiceBus;
+using SagaDataMigrator.EndpointMigrationExample.Messages;
 
-namespace NServiceBus.EndpointMigrationExample;
+namespace SagaDataMigrator.EndpointMigrationExample;
 
 public class Worker : BackgroundService
 {

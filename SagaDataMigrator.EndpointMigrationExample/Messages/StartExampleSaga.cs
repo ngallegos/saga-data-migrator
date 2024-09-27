@@ -1,4 +1,6 @@
-namespace NServiceBus.EndpointMigrationExample.Messages;
+using NServiceBus;
+
+namespace SagaDataMigrator.EndpointMigrationExample.Messages;
 
 public class StartExampleSaga : IMessage
 {

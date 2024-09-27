@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NServiceBus.SagaDataMigrator", "NServiceBus.SagaDataMigrator\NServiceBus.SagaDataMigrator.csproj", "{CBA26922-7AFA-4D08-9EC6-87F9C40DF1F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SagaDataMigrator", "SagaDataMigrator\SagaDataMigrator.csproj", "{CBA26922-7AFA-4D08-9EC6-87F9C40DF1F8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{8E449604-02DD-4E77-A487-EF0C5953831A}"
 	ProjectSection(SolutionItems) = preProject
@@ -8,7 +8,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{8E4496
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NServiceBus.EndpointMigrationExample", "NServiceBus.EndpointMigrationExample\NServiceBus.EndpointMigrationExample.csproj", "{FC7FB79B-747A-4C21-BE0A-08FC573A7CA9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SagaDataMigrator.EndpointMigrationExample", "SagaDataMigrator.EndpointMigrationExample\SagaDataMigrator.EndpointMigrationExample.csproj", "{FC7FB79B-747A-4C21-BE0A-08FC573A7CA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SagaDataMigrator.AzureTablesSagaDataProvider", "SagaDataMigrator.AzureTablesSagaDataProvider\SagaDataMigrator.AzureTablesSagaDataProvider.csproj", "{3A446952-67D0-4232-9F8C-AB08F3CFBD25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +26,9 @@ Global
 		{FC7FB79B-747A-4C21-BE0A-08FC573A7CA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC7FB79B-747A-4C21-BE0A-08FC573A7CA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC7FB79B-747A-4C21-BE0A-08FC573A7CA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A446952-67D0-4232-9F8C-AB08F3CFBD25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A446952-67D0-4232-9F8C-AB08F3CFBD25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A446952-67D0-4232-9F8C-AB08F3CFBD25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A446952-67D0-4232-9F8C-AB08F3CFBD25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

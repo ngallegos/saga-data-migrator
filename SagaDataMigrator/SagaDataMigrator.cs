@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Logging;
+using NServiceBus;
 
-namespace NServiceBus.SagaDataMigrator;
+namespace SagaDataMigrator;
 
 public interface IMigrateSagaData
 {

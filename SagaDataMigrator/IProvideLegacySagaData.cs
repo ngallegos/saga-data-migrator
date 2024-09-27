@@ -1,4 +1,6 @@
-namespace NServiceBus.SagaDataMigrator;
+using NServiceBus;
+
+namespace SagaDataMigrator;
 
 public interface IProvideLegacySagaData
 {
