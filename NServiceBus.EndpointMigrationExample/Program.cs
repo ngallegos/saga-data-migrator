@@ -8,7 +8,7 @@ var endpointName = "EndpointMigrationExample";
 var endpointConfiguration = new EndpointConfiguration(endpointName);
 endpointConfiguration.UseSerialization<SystemJsonSerializer>();
 
-var runInPersistenceMigrationMode = true;
+var runInPersistenceMigrationMode = false;
 
 if (runInPersistenceMigrationMode)
 {
