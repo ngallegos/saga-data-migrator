@@ -1,6 +1,6 @@
 namespace NServiceBus.SagaDataMigrator;
 
-public interface IPersistSagaData
+public interface IPersistSagaData<TSagaData> where TSagaData : class, IContainSagaData
 {
-    Task<List<TSagaData>> GetSagaDataFromSourcePersistence<TSagaData>() where TSagaData : class, IContainSagaData, new();
+    Task<List<TSagaData>> GetSagaDataFromSourcePersistence();
 }

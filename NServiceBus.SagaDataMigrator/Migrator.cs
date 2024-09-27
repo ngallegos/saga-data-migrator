@@ -8,6 +8,7 @@ namespace NServiceBus.SagaDataMigrator;
 public class Migrator
 {
     public static async Task MigrateSagas<TTargetPersistence>(MigratorConfiguration migratorConfiguration,
+        Action<PersistenceExtensions<TTargetPersistence>> persistenceConfiguration,
         IServiceCollection? services = null)
         where TTargetPersistence : PersistenceDefinition
     {
@@ -15,10 +16,11 @@ public class Migrator
         var migratorTypes = Assembly.GetEntryAssembly()?.GetTypes()
             .Where(x => migratorBaseType.IsAssignableFrom(x) && !x.IsAbstract && !x.IsInterface)
             .ToList();
-        await MigrateSagas<TTargetPersistence>(migratorConfiguration, migratorTypes, services);
+        await MigrateSagas<TTargetPersistence>(migratorConfiguration, persistenceConfiguration, migratorTypes, services);
     }
 
     public static async Task MigrateSagas<TTargetPersistence>(MigratorConfiguration migratorConfiguration,
+        Action<PersistenceExtensions<TTargetPersistence>> persistenceConfiguration,
         List<Type>? migratorTypes,
         IServiceCollection? services = null)
         where TTargetPersistence : PersistenceDefinition
@@ -52,19 +54,23 @@ public class Migrator
         transport.StorageDirectory(migratorConfiguration.LocalTransportPath());
 
         var persistence = endpointConfiguration.UsePersistence<TTargetPersistence>();
+        persistenceConfiguration(persistence);
 
         var startableEndpoint = EndpointWithExternallyManagedContainer.Create(endpointConfiguration, services);
-
+        services.AddSingleton(_ => startableEndpoint.MessageSession.Value);
 
         logger.LogInformation("Starting temporary endpoint");
-        var endpoint = await startableEndpoint.Start(serviceProvider);
+        
+
+        serviceProvider = services.BuildServiceProvider();
+        var endpoint = await startableEndpoint.Start(services.BuildServiceProvider());
 
         if (!migratorConfiguration.MessageProcessingOnlyMode)
         {
-            var migrators = serviceProvider.GetRequiredService<List<IMigrateSagaData>>();
+            var migrators = serviceProvider.GetRequiredService<IEnumerable<IMigrateSagaData>>();
             foreach (var migrator in migrators)
             {
-                logger.LogInformation("Migrating data from Azure to Postgres using {Migrator}", migrator.GetType().Name);
+                logger.LogInformation("Migrating data using {Migrator}", migrator.GetType().Name);
                 await migrator.Migrate();
             }
         }

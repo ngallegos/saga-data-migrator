@@ -1,9 +1,12 @@
+using NServiceBus.EndpointMigrationExample.DataMigration;
 using NServiceBus.EndpointMigrationExample.Messages;
+using NServiceBus.SagaDataMigrator;
 
 namespace NServiceBus.EndpointMigrationExample;
 
 public class ExampleSaga : Saga<ExampleSagaData>,
-    IAmStartedByMessages<StartExampleSaga>
+    IAmStartedByMessages<StartExampleSaga>,
+    IAmStartedByMessages<MigrateExampleSagaData>
 {
     private readonly ILogger<ExampleSaga> _logger;
 
@@ -14,21 +17,33 @@ public class ExampleSaga : Saga<ExampleSagaData>,
 
     protected override void ConfigureHowToFindSaga(SagaPropertyMapper<ExampleSagaData> mapper)
     {
-        mapper.ConfigureMapping<StartExampleSaga>(message => message.ExampleId)
-            .ToSaga(sagaData => sagaData.ExampleId);
+        mapper.MapSaga(saga => saga.ExampleId)
+            .ToMessage<StartExampleSaga>(message => message.ExampleId)
+            .ToMessage<MigrateExampleSagaData>(message => message.SagaData.ExampleId);
     }
 
     public Task Handle(StartExampleSaga message, IMessageHandlerContext context)
     {
         Data.ExampleId = message.ExampleId;
         Data.ExampleName = message.ExampleName;
-        Data.Created = DateTimeOffset.Now;
+        Data.Created = DateTimeOffset.UtcNow;
 
         if (_logger.IsEnabled(LogLevel.Information))
         {
             _logger.LogInformation("ExampleSaga started with ExampleId: {ExampleId}, ExampleName: {ExampleName}, Created: {Created}", Data.ExampleId, Data.ExampleName, Data.Created);
         }
 
+        return Task.CompletedTask;
+    }
+
+    public Task Handle(MigrateExampleSagaData message, IMessageHandlerContext context)
+    {
+        Data.CopyFrom(message.SagaData);
+        
+        if (_logger.IsEnabled(LogLevel.Information))
+        {
+            _logger.LogInformation("ExampleSaga migrated saga data with ExampleId: {ExampleId}, ExampleName: {ExampleName}, Created: {Created}", Data.ExampleId, Data.ExampleName, Data.Created);
+        }
         return Task.CompletedTask;
     }
 }
