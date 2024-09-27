@@ -5,5 +5,5 @@ Some things to keep in mind:
 
 * The migration should be run while the live endpoint is offline to avoid issues with in-flight messages
 
-## Instructions
-(WIP)
+## Running the example
+1. Run the `NServiceBus.EndpointMigrationExample` worker project. It should send one message upon startup, initializing the example saga and persisting the state to the specified folder.

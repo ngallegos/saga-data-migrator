@@ -8,6 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{8E4496
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NServiceBus.EndpointMigrationExample", "NServiceBus.EndpointMigrationExample\NServiceBus.EndpointMigrationExample.csproj", "{FC7FB79B-747A-4C21-BE0A-08FC573A7CA9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{CBA26922-7AFA-4D08-9EC6-87F9C40DF1F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBA26922-7AFA-4D08-9EC6-87F9C40DF1F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBA26922-7AFA-4D08-9EC6-87F9C40DF1F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC7FB79B-747A-4C21-BE0A-08FC573A7CA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC7FB79B-747A-4C21-BE0A-08FC573A7CA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC7FB79B-747A-4C21-BE0A-08FC573A7CA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC7FB79B-747A-4C21-BE0A-08FC573A7CA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
