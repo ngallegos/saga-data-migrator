@@ -14,4 +14,11 @@
     <ItemGroup>
       <ProjectReference Include="..\NServiceBus.SagaDataMigrator\NServiceBus.SagaDataMigrator.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="DataMigration\legacy-example-saga-data.json" />
+      <EmbeddedResource Include="DataMigration\legacy-example-saga-data.json">
+        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      </EmbeddedResource>
+    </ItemGroup>
 </Project>

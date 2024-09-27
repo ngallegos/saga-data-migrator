@@ -18,7 +18,7 @@ if (runInPersistenceMigrationMode)
     };
 
     var services = new ServiceCollection();
-    services.AddScoped<IPersistSagaData<ExampleSagaData>, LegacyPersistenceSource>();
+    services.AddScoped<IProvideLegacySagaData, LegacySagaDataProvider>();
     
     Migrator.MigrateSagas<LearningPersistence>(config, persistence =>
     {
